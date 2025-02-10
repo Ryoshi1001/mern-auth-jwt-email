@@ -1,0 +1,34 @@
+{
+  "name": "meauth",
+  "version": "1.0.0",
+  "description": "Full Hand-Coded Authentication System with Sign Up, LogIn, LogOut, Email Verification, Forgot Password Recovery, Welcome Emails",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "concurrently  \"nodemon backend/index.js\" \"npm run tailwind\" \"npm run browser-sync\"",
+    "tailwind": "npx tailwindcss -i ./styles/global.css -o ./public/output.css  --watch",
+    "browser-sync": "browser-sync start --proxy http://localhost:5000 --files \"public/output.css, backend/**/*.html\""
+  },
+  "type": "module",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cookie-parser": "^1.4.7",
+    "crypto": "^1.0.1",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "jsonwebtoken": "^9.0.2",
+    "mailtrap": "^3.4.0",
+    "mongoose": "^8.10.0"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.20",
+    "browser-sync": "^3.0.3",
+    "concurrently": "^9.1.2",
+    "nodemon": "^3.1.9",
+    "postcss": "^8.5.1",
+    "tailwindcss": "^3.4.17"
+  }
+}

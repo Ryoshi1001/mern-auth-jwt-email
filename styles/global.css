@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .bg-gradient-primary {
+    @apply bg-gradient-to-r from-[#3A1C71] via-[#D76D77] to-[#FFAF7B];
+  }
+  .bg-gradient-secondary {
+    @apply bg-gradient-to-r from-[#4158D0] via-[#C850C0] to-[#FFCC70];
+  }
+  .text-accent-teal {
+    @apply text-[#00CDAC];
+  }
+  .text-accent-coral {
+    @apply text-[#FF6B6B];
+  }
+}

@@ -1,0 +1,55 @@
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Dependency directories
+node_modules/
+
+# Build files
+dist/
+build/
+
+# TailwindCSS output
+public/output.css
+public/output.css.map
+
+# Environment variables
+.env
+.env.*
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# IDE and editor specific files
+.idea/
+.vscode/
+*.swp
+
+# Temporary files and folders
+tmp/
+temp/
+
+# TailwindCSS cache
+.tailwind/
+
+# Nodemon debug logs
+*.pid
+
+# Coverage reports
+coverage/
+*.lcov
+
+# MongoDB data (if using local database storage)
+data/
+dump/
+
+# Production-specific settings (if applicable)
+settings/production.js
+
+# Sensitive or custom configuration files
+local_settings.js
