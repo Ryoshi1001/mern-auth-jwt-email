@@ -55,7 +55,6 @@ export const signup = async (req, res) => {
         password: undefined, 
       }
     })
-
   } catch (error) {
     res.status(400).json({success: false, message: error.message})
   }

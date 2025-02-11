@@ -10,6 +10,7 @@ export const sendVerificationEmail = async (email, verificationToken, name) => {
     const emailContent = EMAIL_VERIFICATION_TEMPLATE
       .replace(/{verificationCode}/g, verificationToken)
       .replace(/{userName}/g, name)
+
     const response = await mailtrapClient.send({
       from: sender, 
       to: recipient, 
@@ -17,7 +18,6 @@ export const sendVerificationEmail = async (email, verificationToken, name) => {
       html: emailContent, 
       category: "Email Verification"
     })
-
     console.log("Emailed sent successfully", response)
   } catch (error) {
     console.log("Error sending verification email", error.message)
