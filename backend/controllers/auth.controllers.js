@@ -2,7 +2,7 @@ import { User } from '../models/user.model.js'
 import bcryptjs from 'bcryptjs'
 import { generateVerificationToken } from '../utils/generateVerificationToken.js';
 import { generateTokenSetCookies } from '../utils/generateTokenSetCookies.js'
-import { sendVerificationEmail } from '../mailtrap/sendVerificationEmail.js'
+import { sendVerificationEmail, sendWelcomeEmail } from '../mailtrap/emailFunctions.js'
 
 export const signup = async (req, res) => {
   // postman to test endpoints
@@ -60,14 +60,77 @@ export const signup = async (req, res) => {
   }
 }
 
+export const verifyEmail = async (req, res) => {
+  const { code } = req.body
+
+  try {
+    const user = await User.findOne({
+      verificationToken : code, 
+      verificationTokenExpiresAt: { $gt: Date.now() }
+    })
+
+    if (!user) {
+      return res.status(400).json({success: false, message: "Invalid or expire verification code"})
+    } 
+
+    // update and remove items from DB
+    user.isVerified = true; 
+    user.verificationToken = undefined; 
+    user.verificationTokenExpiresAt = undefined; 
+
+    await user.save(); 
+
+    await sendWelcomeEmail(user.email, user.name)
+
+    res.status(200).json({
+      success: true, 
+      message: "User verified successfully", 
+      user: {
+        ...user._doc, 
+        password: undefined, 
+      }
+    })
+  } catch (error) {
+    console.log("Error in verifyEmail Controller", error)
+    res.status(500).json({success: false, message: error.message})
+  }
+}
+
 export const login = async (req, res) => {
-  res.json({
-    data: "login endpoint"
-  })
+  const {email, password} = req.body; 
+
+  try {
+    const user = await User.findOne({email, password})
+
+    if(!user && !email){
+      return res.status(400).json({success: false, message: "Incorrect email or password"})
+    }
+
+    generateTokenSetCookies(res, user._id); 
+
+    user.lastLogin = Date.now()
+
+    await user.save()
+
+    res.status(200).json({
+      status: success, 
+      message: "Login success", 
+      user: {
+        ...user._doc, 
+        password: undefined, 
+      }
+    })
+
+  } catch (error) {
+    console.log("Error in login controller", error.message); 
+    throw new Error(`Error logging in ${error}`)
+  }
 }
 
 export const logout = async (req, res) => {
-  res.json({
-    data: "logout endpoint"
+  res.clearCookie("token")
+  res.status(200).json({
+    success: true, 
+    message: "Logged out successfully"
   })
 }
