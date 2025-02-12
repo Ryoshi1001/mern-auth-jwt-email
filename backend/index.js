@@ -5,6 +5,8 @@ import authRoutes from './routes/auth.routes.js'
 import { dbConnection } from './config/database.js'
 //for tailwind css
 import path from 'path'
+//for check-auth token
+import cookieParser from 'cookie-parser'
 
 dotenv.config()
 
@@ -18,6 +20,7 @@ app.use(express.static(path.join(path.resolve(), 'public')));
 app.use(express.static(path.join(path.resolve(), 'backend')));
 
 app.use(express.json()) // allows parsing of incoming JSON payload: req.body
+app.use(cookieParser()) // allow parsing of incoming cookies: req.cookies.token
 
 // routes
 app.use('/api/auth', authRoutes)

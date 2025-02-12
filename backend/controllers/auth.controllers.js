@@ -208,3 +208,24 @@ export const resetPassword = async(req, res) => {
     res.status(400).json({success: false, message: error.message})
   }
 }
+
+export const checkAuth = async (req, res) => {
+  try {
+    const user = await User.findById(req.userId).select("-password"); 
+
+    if(!user){
+      return res.status(400).json({status: false, message: "No user found"}); 
+    }
+
+    res.status(200).json({
+      success: true,  
+      message: "User authenticated",
+      user: {
+      ...user._doc, 
+      password: undefined, 
+    }})
+  } catch (error) {
+    console.log("Error in checkAuth controller function: ", error)
+    res.status(500).json({success: false, message: error.message})
+  }
+}
