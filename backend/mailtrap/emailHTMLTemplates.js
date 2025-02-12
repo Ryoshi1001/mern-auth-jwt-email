@@ -97,6 +97,7 @@ export const WELCOME_EMAIL_TEMPLATE = `
 </body>
 </html>
 `
+
 export const PASSWORD_RESET_SUCCESS_TEMPLATE = `
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -160,7 +161,7 @@ export const PASSWORD_RESET_TEMPLATE = `
         </tr>
         <tr>
             <td style="padding: 40px 30px;">
-                <p style="color: #333333; font-size: 16px; line-height: 1.5;">Hello {userName},</p>
+                <p style="color: #333333; font-size: 16px; line-height: 1.5;">Hello</p>
                 <p style="color: #333333; font-size: 16px; line-height: 1.5;">We received a request to reset your password. If you didn't make this request, you can ignore this email. Otherwise, please use the button below to reset your password.</p>
                 <table border="0" cellpadding="0" cellspacing="0" width="100%" style="margin-top: 30px; margin-bottom: 30px;">
                     <tr>
