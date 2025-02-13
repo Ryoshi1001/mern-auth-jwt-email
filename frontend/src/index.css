@@ -1,0 +1,33 @@
+@import "tailwindcss";
+
+
+@layer utilities {
+  .primary-bg {
+    @apply bg-gradient-to-br from-[#3A1C71] via-[#D76D77] to-[#FFAF7B]
+  }
+
+  .secondary-bg {
+    @apply bg-gradient-to-br from-[#4158D0] via-[#C850C0] to-[#FFCC70]
+  }
+
+  .accent-color1 {
+    @apply bg-[#00CDAC]
+  }
+
+  .accent-color2 {
+    @apply bg-[#FF6B6B]
+  }
+  
+  .accent-color3 {
+    @apply bg-[#3A1C71]
+  }
+
+  .text-color1 {
+    @apply text-[#FF6B6B]
+  }
+
+  .text-color2 {
+    @apply text-[#4158D0]
+  }
+  
+}
