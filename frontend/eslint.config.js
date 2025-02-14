@@ -25,7 +25,7 @@ export default [
     },
     rules: {
       'react/prop-types': 'off', 
-      'react/no-escaped-entities': 'off', 
+      'react/no-unescaped-entities': 'off', 
       ...js.configs.recommended.rules,
       ...react.configs.recommended.rules,
       ...react.configs['jsx-runtime'].rules,

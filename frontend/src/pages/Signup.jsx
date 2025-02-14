@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, redirect } from 'react-router-dom';
 import {
   LockPasswordIcon,
   Mail01Icon,
@@ -15,8 +15,29 @@ const Signup = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleSignup = (e) => {
+  const handleSignup = async (e) => {
     e.preventDefault();
+    const data = {
+      name, 
+      email,
+      password, 
+    }
+
+    try {
+      const  response = await fetch("/api/signup", {
+      method: "POST", 
+      headers: {"Content-Type" : "application/json"}, 
+      body: JSON.stringify(data), 
+    })
+
+    if(!response.ok){
+      console.log("Error signing up: ")
+    } else {
+      redirect ("/verify-email")
+    }
+    } catch (error) {
+      console.log("Error signing up: ", error)
+    }
   };
 
   return (

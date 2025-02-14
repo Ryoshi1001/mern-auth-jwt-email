@@ -29,5 +29,9 @@
   .text-color2 {
     @apply text-[#4158D0]
   }
+
+  .hover-bg1 {
+    @apply bg-[#ff5e5e]
+  }
   
 }

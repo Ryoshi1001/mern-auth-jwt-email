@@ -5,6 +5,7 @@ import Homepage from './pages/Homepage';
 import BackgroundCircles1 from './components/BackgroundCircles1';
 import BackgroundCircles2 from './components/BackgroundCircles2';
 import ForgotPassword from './pages/ForgotPassword';
+import VerifyEmail from './pages/VerifyEmail';
 
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
+          <Route path="/verify-email" element={<VerifyEmail />} />
         </Routes>
       </div>
     </>
