@@ -73,7 +73,7 @@ const Signup = () => {
 
           <motion.button
             type="submit"
-            className="bg-[#FF6B6B] text-[#fff] font-bold rounded-lg p-4 cursor-pointer shadow-lg focus:outline-none focus:ring-[#ff5e5e] focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-950 transition-duration-200 hover:bg-[#ff5e5e]"
+            className="bg-[#FF6B6B] text-[#fff] font-bold rounded-lg p-4 cursor-pointer shadow-lg focus:outline-none focus:ring-[#ff5e5e] focus:ring-2 focus:ring-offset-2 focus:ring-offset-[#fff] transition-duration-200 hover:bg-[#ff5e5e]"
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
           >
