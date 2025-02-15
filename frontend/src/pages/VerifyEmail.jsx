@@ -1,13 +1,18 @@
 import { useEffect, useRef, useState } from 'react';
-import { motion } from 'framer-motion';
+import { m, LazyMotion, domAnimation } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import { Loading02Icon } from '@hugeicons/core-free-icons';
 import { HugeiconsIcon } from '@hugeicons/react';
+import { useAuthStore } from '../store/authStore';
+import toast from 'react-hot-toast';
+
 
 const VerifyEmail = () => {
   const [code, setCode] = useState(['', '', '', '', '', '']);
   const inputRefs = useRef([]);
-  const isLoading = false;
+  const navigate = useNavigate()
+
+  const { verifyEmail, error, isLoading } = useAuthStore()
 
   const handleChange = (index, value) => {
     const newCode = [...code];
@@ -42,24 +47,29 @@ const VerifyEmail = () => {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault(); 
     const verificationCode = code.join(""); 
     console.log(`Verification code submitted: ${verificationCode}`)
-  }
-
-  // Auto-submit if all inputs are filled
-  useEffect(() => {
-    if(code.every(digit => digit !== "")){
-      handleSubmit(new Event("submit")); 
+    try {
+      await verifyEmail(verificationCode)
+      navigate('/')
+      toast.success(
+        "Email verified successfully", 
+        {
+          duration: 3000, 
+        }
+      )
+    } catch (error) {
+      console.log(error)
     }
-  },[code])
-  
 
+  }
 
   return (
     <>
-      <motion.div
+    <LazyMotion features={domAnimation}>
+    <m.div
         className=" h-auto w-full sm:max-w-md z-10 rounded-xl bg-[#fff] backdrop-blur-xl backdrop-filter shadow-xl bg-opacity-100 overflow-hidden"
         initial={{ opacity: 0, y: -80 }}
         animate={{
@@ -98,7 +108,9 @@ const VerifyEmail = () => {
             ))}
           </div>
 
-          <motion.button
+          {error && <p className='text-sm error-text font-bold'>{error}</p>}
+
+          <m.button
             type="submit"
             className="bg-[#FF6B6B] text-[#fff] font-bold rounded-lg p-4 cursor-pointer shadow-lg focus:outline-none focus:ring-[#ff5e5e] focus:ring-2 focus:ring-offset-2 focus:ring-offset-[#fff] transition-duration-200 hover:bg-[#ff5e5e]"
             whileHover={{ scale: 1.02 }}
@@ -116,10 +128,10 @@ const VerifyEmail = () => {
             ) : (
               'Verify Email'
             )}
-          </motion.button>
+          </m.button>
         </form>
-      </motion.div>
-    </>
+        </m.div>
+        </LazyMotion>    </>
   );
 };
 

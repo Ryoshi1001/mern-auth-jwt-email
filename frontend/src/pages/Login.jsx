@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { m, LazyMotion, domAnimation } from 'framer-motion';
 import Input from '../components/Input';
 import {
   Loading02Icon,
@@ -19,7 +19,8 @@ const Login = () => {
 
   return (
     <>
-      <motion.div
+   <LazyMotion features={domAnimation}>
+   <m.div
         className=" h-auto w-full sm:max-w-md z-10 rounded-xl bg-[#fff] backdrop-blur-xl backdrop-filter shadow-xl bg-opacity-100 overflow-hidden"
         initial={{ opacity: 0, y: 80 }}
         animate={{
@@ -60,7 +61,7 @@ const Login = () => {
             Forgot password?
           </Link>
 
-          <motion.button
+          <m.button
             type="submit"
             className="bg-[#FF6B6B] text-[#fff] font-bold rounded-lg p-4 cursor-pointer shadow-lg focus:outline-none focus:ring-[#ff5e5e] focus:ring-2 focus:ring-offset-2 focus:ring-offset-[#fff] transition-duration-200 hover:bg-[#ff5e5e]"
             whileHover={{ scale: 1.02 }}
@@ -78,7 +79,7 @@ const Login = () => {
             ) : (
               'Login'
             )}
-          </motion.button>
+          </m.button>
         </form>
         <div className="flex flex-row gap-3 items-center justify-center bg-gray-900 rounded-br-xl rounded-bl-xl py-8 text-gray-300">
           <p>Don't an account?</p>
@@ -87,7 +88,8 @@ const Login = () => {
             Sign up
           </Link>
         </div>
-      </motion.div>
+        </m.div>
+        </LazyMotion>
     </>
   );
 };

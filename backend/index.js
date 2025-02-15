@@ -1,4 +1,5 @@
 import express from 'express'
+import cors from 'cors'
 import mongoose from 'mongoose'
 import dotenv from 'dotenv'
 import authRoutes from './routes/auth.routes.js'
@@ -14,8 +15,10 @@ const PORT = process.env.PORT || 5000; // Define PORT here, after dotenv.config(
 
 const app = express()
 
+
 //Middleware
 // Middleware to serve static files
+app.use(cors({origin: "http://localhost:5173", credentials: true})); 
 app.use(express.static(path.join(path.resolve(), 'public')));
 app.use(express.static(path.join(path.resolve(), 'backend')));
 

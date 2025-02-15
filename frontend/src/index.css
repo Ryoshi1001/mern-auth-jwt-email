@@ -33,5 +33,9 @@
   .hover-bg1 {
     @apply bg-[#ff5e5e]
   }
+
+  .error-text {
+    @apply text-[#D22B2B]
+  }
   
 }

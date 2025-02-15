@@ -75,7 +75,7 @@ export const verifyEmail = async (req, res) => {
     })
 
     if (!user) {
-      return res.status(400).json({success: false, message: "Invalid or expire verification code"})
+      return res.status(400).json({success: false, message: "Invalid or expired verification code"})
     } 
 
     // update and remove items from DB
