@@ -1,31 +1,34 @@
-import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
 import { m, LazyMotion, domAnimation } from 'framer-motion';
 import Input from '../components/Input';
-import {
-  Loading02Icon,
-  LockPasswordIcon,
-  Mail01Icon,
-} from '@hugeicons/core-free-icons';
+import { Loading02Icon, LockPasswordIcon } from '@hugeicons/core-free-icons';
 import { HugeiconsIcon } from '@hugeicons/react';
+import { useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useAuthStore } from '../store/authStore';
 import toast from 'react-hot-toast';
 
-const Login = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+const ResetPassword = () => {
+  const [password, setPassword] = useState();
+  const [confirmPassword, setConfirmPassword] = useState();
+  const { resetPassword, error, isLoading, message } = useAuthStore();
+
+  const { token } = useParams()
   const navigate = useNavigate();
 
-  const { login, isLoading, error } = useAuthStore();
-
-  const handleLogin = async (e) => {
+  const handleResetPassword = async (e) => {
     e.preventDefault();
     try {
-      await login(email, password);
-      toast.success('Login successful', { duration: 3000 });
-      navigate('/');
+      if (password !== confirmPassword) {
+        toast.error("Error passwords do not match.")
+        return; 
+      } else {
+        await resetPassword(password, token);
+        toast.success('Password reset successfully, redirecting to login page...');
+        navigate('/login');      }
     } catch (error) {
-      console.log('Error logging in: ', error);
+      console.log("Error passwords do not match: ", error)
+      toast.error(error.message || "Error resetting password")
+
     }
   };
 
@@ -44,38 +47,35 @@ const Login = () => {
           }}
         >
           <form
-            onSubmit={handleLogin}
-            className="text-color1 border-1 border-b-0 rounded-tr-xl rounded-tl-xl border-[#FF6B6B] flex flex-col gap-3 p-4 sm:p-8 pb-4 pt-4"
+            onSubmit={handleResetPassword}
+            className="text-color1 border-1 border-b-0 rounded-tr-xl rounded-tl-xl border-[#FF6B6B] flex flex-col gap-3 p-4 sm:p-8"
           >
             <div className="text-center text-xl font-bold text-color1">
-              Welcome Back
+              Reset Password
             </div>
 
             <Input
-              label="Email"
-              icon={Mail01Icon}
-              type="text"
-              placeholder="Email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-            <Input
-              label="Pasword"
               icon={LockPasswordIcon}
               type="text"
-              placeholder="password"
+              placeholder="New Password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
+            <Input
+              icon={LockPasswordIcon}
+              type="text"
+              placeholder="Confirm new password"
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+            />
 
-            {error && <div className="text-sm error-text font-bold pt-1">{error}</div>}
+            {error && (
+              <div className="text-sm error-text font-bold pt-1">{error}</div>
+            )}
 
-            <Link
-              to={'/forgot-password'}
-              className="text-color1 hover:underline text-sm"
-            >
-              Forgot password?
-            </Link>
+            {message && (
+              <div className="text-sm error-text font-bold pt-1">{message}</div>
+            )}
 
             <m.button
               type="submit"
@@ -93,21 +93,14 @@ const Login = () => {
                   className="animate-spin mx-auto"
                 />
               ) : (
-                'Login'
+                'Set new password'
               )}
             </m.button>
           </form>
-          <div className="flex flex-row gap-3 items-center justify-center bg-gray-900 rounded-br-xl rounded-bl-xl py-8 text-gray-300">
-            <p>Don't an account?</p>
-
-            <Link to={'/signup'} className="text-color1 hover:underline">
-              Sign up
-            </Link>
-          </div>
         </m.div>
       </LazyMotion>
     </>
   );
 };
 
-export default Login;
+export default ResetPassword;

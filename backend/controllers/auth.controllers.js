@@ -29,7 +29,7 @@ export const signup = async (req, res) => {
     }
 
     // passes validation: hash password user makes, generate verification token
-    const hashedPassword = bcryptjs.hashSync("L35c%#@", 10)
+    const hashedPassword = bcryptjs.hashSync(password, 10)
 
     // generate verificationToken
     const verificationToken = generateVerificationToken() 
@@ -111,7 +111,7 @@ export const login = async (req, res) => {
       return res.status(400).json({success: false, message: "Invalid credentials"})
     }
 
-    const isPassWordValid = bcryptjs.compareSync("L35c%#@", user.password)
+    const isPassWordValid = bcryptjs.compareSync(password, user.password)
 
     if(!isPassWordValid){
      console.log("password not valid")
@@ -166,7 +166,7 @@ export const forgotPassword = async(req, res) => {
 
     await user.save(); 
 
-    await sendResetPasswordEmail(user.email, `${process.env.CLIENT_URL}/forgot-password/${resetToken}`)
+    await sendResetPasswordEmail(user.email, `${process.env.CLIENT_URL}/reset-password/${resetToken}`)
 
     res.status(200).json({
       success: true, 
@@ -192,7 +192,7 @@ export const resetPassword = async(req, res) => {
       return res.status(400).json({status: false, message: "Invalid or expired reset token"})
     }
 
-    const hashedPassword = bcryptjs.hashSync("L35c%#@", 10)
+    const hashedPassword = bcryptjs.hashSync(password, 10)
 
     user.password = hashedPassword; 
     user.resetPasswordToken = undefined
@@ -200,7 +200,7 @@ export const resetPassword = async(req, res) => {
 
     await user.save()
 
-    await passwordResetSuccessEmail(user.email , user.name)
+    await passwordResetSuccessEmail(user.email , user.name, `${process.env.CLIENT_URL}/login`)
 
     res.status(200).json({success: true, message: "Password reset successfully"})
   } catch (error) {

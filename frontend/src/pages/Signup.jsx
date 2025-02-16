@@ -91,7 +91,7 @@ const Signup = () => {
             onChange={(e) => setPassword(e.target.value)}
           />
 
-          {error && <p className='text-sm error-text font-bold'>{error}</p>}
+          {error && <div className='text-sm error-text font-bold pt-1'>{error}</div>}
 
           {password.length ? (
             <PasswordStrengthIndicator password={password} />

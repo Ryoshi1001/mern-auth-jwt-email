@@ -71,14 +71,17 @@ export const sendResetPasswordEmail = async (email, resetURL ) => {
   }
 }
 
-export const passwordResetSuccessEmail = async (email, name) => {
+export const passwordResetSuccessEmail = async (email, name, loginURL) => {
   const recipient = [
     {email}
   ]
 
   try {
     const emailContent = PASSWORD_RESET_SUCCESS_TEMPLATE 
+      .replace(/{loginLink}/g, loginURL)
       .replace(/{userName}/g, name)
+      
+
 
     const response = mailtrapClient.send({
       from: sender, 
