@@ -1,6 +1,9 @@
 import { HugeiconsIcon } from '@hugeicons/react';
-import { CancelCircleIcon, CheckmarkCircle01Icon } from '@hugeicons/core-free-icons';
-import PropTypes from 'prop-types'
+import {
+  CancelCircleIcon,
+  CheckmarkCircle01Icon,
+} from '@hugeicons/core-free-icons';
+import PropTypes from 'prop-types';
 
 const PasswordCriteria = ({ password }) => {
   const criteria = [
@@ -17,7 +20,10 @@ const PasswordCriteria = ({ password }) => {
   return (
     <div>
       {criteria.map((item) => (
-        <div className='flex flex-row items-center gap-1 text-sm' key={item.label}>
+        <div
+          className="flex flex-row items-center gap-1 text-sm"
+          key={item.label}
+        >
           {item.met ? (
             <HugeiconsIcon
               icon={CheckmarkCircle01Icon}
@@ -33,7 +39,7 @@ const PasswordCriteria = ({ password }) => {
               strokeWidth={1.5}
             />
           )}
-          <small className={item.met ? `text-[#4bb543]` : `text-color1` }>
+          <small className={item.met ? `text-[#4bb543]` : `text-color1`}>
             {item.label}
           </small>
         </div>
@@ -63,12 +69,12 @@ const PasswordStrengthIndicator = ({ password }) => {
   const strength = getStrength(password);
 
   const strengthColor = (strength) => {
-    if(strength === 0) return "bg-red-400"
-    if(strength === 1) return "bg-red-300"
-    if(strength === 2) return "bg-yellow-500"
-    if(strength === 3) return "bg-yellow-400"
-    return "bg-green-400"; 
-  }; 
+    if (strength === 0) return 'bg-[#FF6B6B]';
+    if (strength === 1) return 'bg-[#FF9E9E]';
+    if (strength === 2) return 'bg-[#FFD93D]';
+    if (strength === 3) return 'bg-[#6BCB77]';
+    return 'bg-[#4D96FF]';
+  };
 
   const textStrength = (strength) => {
     if (strength === 0) {
@@ -88,30 +94,30 @@ const PasswordStrengthIndicator = ({ password }) => {
   };
 
   return (
-    <div className='flex flex-col gap-1'>
+    <div className="flex flex-col gap-1">
       <div className="flex flex-row justify-between">
         <p>Password strength</p>
         <p>{textStrength(strength)}</p>
       </div>
-      <div className='flex gap-[1px]'>
+      <div className="flex gap-[1px]">
         {[...Array(4)].map((_, index) => (
-          <div 
-          key={index}
-          className={`h-1 w-1/4 rounded-full transition-colors duration-300
+          <div
+            key={index}
+            className={`h-1 w-1/4 rounded-full transition-colors duration-300
             ${index < strength ? strengthColor(strength) : 'bg-gray-400'}`}
           ></div>
         ))}
       </div>
-      <PasswordCriteria password={password}/>
+      <PasswordCriteria password={password} />
     </div>
   );
 };
 
 PasswordCriteria.propTypes = {
-  password: PropTypes.string.isRequired
-}
+  password: PropTypes.string.isRequired,
+};
 PasswordStrengthIndicator.propTypes = {
-  password: PropTypes.string.isRequired
-}
+  password: PropTypes.string.isRequired,
+};
 
 export default PasswordStrengthIndicator;

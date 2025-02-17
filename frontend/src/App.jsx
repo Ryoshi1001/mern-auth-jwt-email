@@ -53,32 +53,32 @@ function App() {
     <LazyMotion features={domAnimation}>
       <div className="primary-bg min-h-screen flex items-center justify-center relative overflow-hidden p-[1rem]">
         <BackgroundCircles1
-          color="accent-color2"
+          color="accent-color1"
           size="w-64 h-64"
           top="-8%"
           left="4%"
-          delay={0}
+          delay={3}
         />
         <BackgroundCircles2
-          color="accent-color1"
+          color="accent-color2"
           size="w-44 h-44"
           top="10%"
           right="34%"
-          delay={4}
+        
         />
         <BackgroundCircles1
-          color="accent-color1"
+          color="accent-color2"
           size="w-34 h-34"
           bottom="30%"
           right="30%"
-          delay={0}
+          
         />
 
         <Suspense
           fallback={
             <HugeiconsIcon
               icon={Loading02Icon}
-              color="#fff"
+              color="#FFE8FF"
               strokeWidth={1.5}
               className="animate-spin mx-auto h-24 w-24"
             />
@@ -109,17 +109,25 @@ function App() {
                 </AuthenticatedUserRedirect>
               }
             />
-            <Route 
-              path="/forgot-password" 
+            <Route
+              path="/forgot-password"
               element={
-              <AuthenticatedUserRedirect>
-                <ForgotPassword />
-              </AuthenticatedUserRedirect>
-              } />
+                <AuthenticatedUserRedirect>
+                  <ForgotPassword />
+                </AuthenticatedUserRedirect>
+              }
+            />
             <Route path="/verify-email" element={<VerifyEmail />} />
-            <Route path="/reset-password/:token" element={           <AuthenticatedUserRedirect>
-                <ResetPassword />
-              </AuthenticatedUserRedirect>} />
+            <Route
+              path="/reset-password/:token"
+              element={
+                <AuthenticatedUserRedirect>
+                  <ResetPassword />
+                </AuthenticatedUserRedirect>
+              }
+            />
+            {/* catch all routes could also be 404 page */}
+            <Route path="*" element={<Homepage />} />
           </Routes>
           <Toaster />
         </Suspense>
@@ -129,4 +137,3 @@ function App() {
 }
 
 export default App;
-

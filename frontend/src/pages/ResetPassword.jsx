@@ -12,23 +12,26 @@ const ResetPassword = () => {
   const [confirmPassword, setConfirmPassword] = useState();
   const { resetPassword, error, isLoading, message } = useAuthStore();
 
-  const { token } = useParams()
+  const { token } = useParams();
   const navigate = useNavigate();
 
   const handleResetPassword = async (e) => {
     e.preventDefault();
     try {
       if (password !== confirmPassword) {
-        toast.error("Error passwords do not match.")
-        return; 
+        toast.error('Error passwords do not match.');
+        return;
       } else {
         await resetPassword(password, token);
-        toast.success('Password reset successfully, redirecting to login page...');
-        navigate('/login');      }
+        toast.success('Password reset successful', { duration: 3000 });
+        navigate('/');
+        setTimeout(() => {
+          navigate('/login');
+        }, 2000);
+      }
     } catch (error) {
-      console.log("Error passwords do not match: ", error)
-      toast.error(error.message || "Error resetting password")
-
+      console.log('Error passwords do not match: ', error);
+      toast.error(error.message || 'Error resetting password');
     }
   };
 
@@ -36,7 +39,7 @@ const ResetPassword = () => {
     <>
       <LazyMotion features={domAnimation}>
         <m.div
-          className=" h-auto w-full sm:max-w-md z-10 rounded-xl bg-[#fff] backdrop-blur-xl backdrop-filter shadow-xl bg-opacity-100 overflow-hidden"
+          className="h-auto w-full sm:max-w-md z-10 rounded-xl card-bg shadow-xl bg-opacity-100 overflow-hidden"
           initial={{ opacity: 0, y: 80 }}
           animate={{
             opacity: 1,
@@ -48,7 +51,7 @@ const ResetPassword = () => {
         >
           <form
             onSubmit={handleResetPassword}
-            className="text-color1 border-1 border-b-0 rounded-tr-xl rounded-tl-xl border-[#FF6B6B] flex flex-col gap-3 p-4 sm:p-8"
+            className="text-color1 flex flex-col gap-3 p-4 sm:p-8"
           >
             <div className="text-center text-xl font-bold text-color1">
               Reset Password
@@ -79,7 +82,7 @@ const ResetPassword = () => {
 
             <m.button
               type="submit"
-              className="bg-[#FF6B6B] text-[#fff] font-bold rounded-lg p-4 cursor-pointer shadow-lg focus:outline-none focus:ring-[#ff5e5e] focus:ring-2 focus:ring-offset-2 focus:ring-offset-[#fff] transition-duration-200 hover:bg-[#ff5e5e]"
+              className="button-style text-center w-full"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               disabled={isLoading}
@@ -88,7 +91,7 @@ const ResetPassword = () => {
                 <HugeiconsIcon
                   icon={Loading02Icon}
                   size={24}
-                  color="currentColor"
+                  color="#FFE8FF" 
                   strokeWidth={1.5}
                   className="animate-spin mx-auto"
                 />

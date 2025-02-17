@@ -1,41 +1,109 @@
 @import "tailwindcss";
 
+@theme {
+  --color1: #161940;
+  --color2: #131545;
+  --color3: #2B2580;
+  --color4: #493CAB;
+  --color5: #EDC5FF;
+  --color6: #FFE8FF;
+  --color7: #3A32A6;
+  --color8: #1C1C63;
+  --gradient-multicolor: linear-gradient(135deg,
+      var(--color1) 0%,
+      var(--color2) 14.28%,
+      var(--color3) 28.57%,
+      var(--color4) 42.86%,
+      var(--color5) 57.14%,
+      var(--color6) 71.43%,
+      var(--color7) 85.71%,
+      var(--color8) 100%);
+}
 
 @layer utilities {
+  .bg-gradient-multicolor {
+    background-image: var(--gradient-multicolor);
+    background-attachment: fixed;
+    background-size: 400% 400%;
+    animation: gradientShift 15s ease infinite;
+  }
+
+  @keyframes gradientShift {
+    0% {
+      background-position: 0% 50%;
+    }
+
+    50% {
+      background-position: 100% 50%;
+    }
+
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+
   .primary-bg {
-    @apply bg-gradient-to-br from-[#3A1C71] via-[#D76D77] to-[#FFAF7B]
+    background-image: var(--gradient-multicolor);
+    backdrop-filter: blur(4px);
+    color: #E94560;
   }
 
   .secondary-bg {
-    @apply bg-gradient-to-br from-[#4158D0] via-[#C850C0] to-[#FFCC70]
+    @apply bg-gradient-to-r from-[#161940] via-[#2B2580] to-[#493CAB];
   }
 
   .accent-color1 {
-    @apply bg-[#00CDAC]
+    @apply bg-[#FFE8FF] ;
   }
 
   .accent-color2 {
-    @apply bg-[#FF6B6B]
+    @apply bg-[#c42dff];
   }
-  
+
   .accent-color3 {
-    @apply bg-[#3A1C71]
+    @apply bg-[#131545] ;
   }
 
   .text-color1 {
-    @apply text-[#FF6B6B]
+    @apply text-[#161940];
   }
 
   .text-color2 {
-    @apply text-[#4158D0]
+    @apply text-[#2B2580];
   }
 
   .hover-bg1 {
-    @apply bg-[#ff5e5e]
+    @apply bg-[#161940] hover:bg-[#1C1C63];
   }
 
   .error-text {
-    @apply text-[#D22B2B]
+    @apply text-[#FF6B6B] font-semibold;
   }
-  
+
+  .button-style {
+    @apply bg-gradient-to-r from-[#EDC5FF] to-[#3A32A6] hover:from-[#FFE8FF] hover:to-[#493CAB] text-[#fff] font-bold text-lg sm:text-xl rounded-lg p-4 shadow-lg hover:shadow-xl hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#3A32A6] active:scale-[0.98] border border-[#161940] hover:border-[#1C1C63] mt-2;
+  }
+
+  .card-bg {
+    @apply bg-[#FFF8FF] backdrop-filter backdrop-blur-md shadow-lg border border-[#2B2580];
+  }
+
+  .input-style {
+    @apply bg-[#131545] placeholder:text-[#fff] backdrop-filter backdrop-blur-sm border border-[#2B2580] focus:border-[#EDC5FF] focus:ring-[#EDC5FF] rounded-md shadow-sm text-[#FFF];
+  }
+
+
+  .link-style {
+    @apply text-[#EDC5FF] hover:text-[#FFE8FF];
+  }
+
+  .highlight-text {
+    @apply text-[#FFE8FF] font-semibold;
+  }
+
+  .light-accent {
+    @apply bg-[#EDC5FF20] text-[#EDC5FF] rounded-md px-2 py-1;
+  }
+
 }
