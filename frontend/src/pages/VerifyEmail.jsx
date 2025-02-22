@@ -12,32 +12,32 @@ const VerifyEmail = () => {
   const navigate = useNavigate();
 
   const { verifyEmail, error, isLoading } = useAuthStore();
-
+  
   const handleChange = (index, value) => {
     const newCode = [...code];
-
-    // handle user pasted content
+  
+    // Handle pasted content
     if (value.length > 1) {
-      const pastedCode = value.slice(0, 6).split('');
+      const pastedCode = value.slice(0, 6).split('').filter(char => /^\d$/.test(char));
       for (let i = 0; i < 6; i++) {
         newCode[i] = pastedCode[i] || '';
       }
-      setCode(newCode);
-
-      // focus on last non-empty input or first empty input
-      const lastFilledIndex = newCode.findLastIndex((digit) => digit !== '');
-      const focusIndex = lastFilledIndex < 5 ? lastFilledIndex + 1 : 5;
-      inputRefs.current[focusIndex].focus();
     } else {
-      newCode[index] = value;
-      setCode(newCode);
-
-      // move focus to next input when value is entered
-      if (value && index < 5) {
-        inputRefs.current[index + 1].focus();
-      }
+      // For single character input, only allow digits
+      newCode[index] = value.replace(/\D/g, '').slice(0, 1);
+    }
+  
+    setCode(newCode);
+  
+    // Focus logic
+    const nextEmptyIndex = newCode.findIndex((digit, i) => digit === '' && i > index);
+    if (nextEmptyIndex !== -1) {
+      inputRefs.current[nextEmptyIndex].focus();
+    } else if (index < 5 && newCode[index] !== '') {
+      inputRefs.current[index + 1].focus();
     }
   };
+  
 
   const handleKeyDown = (index, e) => {
     if (e.key === 'Backspace' && !code[index] && index > 0) {
@@ -93,12 +93,13 @@ const VerifyEmail = () => {
                   ref={(el) => {
                     inputRefs.current[index] = el;
                   }}
+                  inputMode='numeric'
                   type="number"
                   value={digit}
                   max="9"
                   onChange={(e) => handleChange(index, e.target.value)}
                   onKeyDown={(e) => handleKeyDown(index, e)}
-                  className="text-[#fff] w-12 h-12 border rounded-lg accent-color2 text-center shadow-lg  font-bold focus:outline-none focus:ring-[#2B2580] focus:ring-2 focus:ring-offset-2 focus:ring-offset-[#fff] transition-duration-200 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+                  className="text-[#fff] w-12 h-12 border rounded-lg accent-color3 text-center shadow-lg  font-bold focus:outline-none focus:ring-[#2B2580] focus:ring-2 focus:ring-offset-2 focus:ring-offset-[#fff] transition-duration-200 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
                 />
               ))}
             </div>

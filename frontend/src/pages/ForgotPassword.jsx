@@ -126,7 +126,7 @@ const ForgotPassword = () => {
               className=""
             />
 
-            <Link to={'/signup'} className="link-style hover:underline">
+            <Link to={'/login'} className="link-style hover:underline">
               Back to Login
             </Link>
           </div>

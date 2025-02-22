@@ -18,7 +18,12 @@ const __dirname = path.resolve()
 
 //Middleware
 // Middleware to serve static files
-app.use(cors({origin: "http://localhost:5173", credentials: true})); 
+app.use(cors({
+  origin: process.env.NODE_ENV === 'production' 
+    ? process.env.FRONTEND_URL 
+    : "http://localhost:5173",
+  credentials: true
+}));
 
 app.use(express.json()) // allows parsing of incoming JSON payload: req.body
 app.use(cookieParser()) // allow parsing of incoming cookies: req.cookies.token

@@ -10,7 +10,7 @@ export const EMAIL_VERIFICATION_TEMPLATE = `
 <body style="margin: 0; padding: 0; font-family: Arial, sans-serif; background-color: #ffffff; display: flex, justify-content: center; align-items: center;">
     <table border="0" cellpadding="0" cellspacing="0" height="100%" width="100%" style="max-width: 600px; margin: 20px auto !important; background-color: #ffffff; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
         <tr>
-            <td style="padding: 40px 30px; background: linear-gradient(to right, #3A1C71, #D76D77, #FFAF7B); text-align: center;">
+            <td style="padding: 40px 30px; background: linear-gradient(to right, #161940, #131545, #2B2580, #493CAB,  #3A32A6, #1C1C63); text-align: center;">
                 <h1 style="color: #ffffff; margin: 0; font-size: 28px; font-weight: bold;">Verify Your Email</h1>
             </td>
         </tr>
@@ -21,7 +21,7 @@ export const EMAIL_VERIFICATION_TEMPLATE = `
                 <table border="0" cellpadding="0" cellspacing="0" width="100%" style="margin-top: 30px; margin-bottom: 30px;">
                     <tr>
                         <td align="center">
-                            <p style="display: inline-block; padding: 14px 30px; background: linear-gradient(to right, #4158D0, #C850C0, #FFCC70); color: #ffffff; text-decoration: none; border-radius: 5px; font-weight: bold; text-transform: uppercase; font-size: 16px;">{verificationCode}</p>
+                            <p style="display: inline-block; padding: 14px 30px; background: linear-gradient(to right, #161940, #131545, #2B2580, #493CAB, #3A32A6, #1C1C63); color: #ffffff; text-decoration: none; border-radius: 5px; font-weight: bold; text-transform: uppercase; font-size: 16px;">{verificationCode}</p>
                         </td>
                     </tr>
                 </table>
@@ -56,7 +56,7 @@ export const WELCOME_EMAIL_TEMPLATE = `
     <table border="0" cellpadding="0" cellspacing="0" height="100%" width="100%" style="max-width: 600px; margin: 20px auto !important; background-color: #ffffff; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
         <!-- Header Section -->
         <tr>
-            <td style="padding: 40px 30px; background: linear-gradient(to right, #3A1C71, #D76D77, #FFAF7B); text-align: center;">
+            <td style="padding: 40px 30px; background: linear-gradient(to right, #161940, #131545, #2B2580, #493CAB #3A32A6, #1C1C63); text-align: center;">
                 <h1 style="color: #ffffff; margin: 0; font-size: 28px; font-weight: bold;">Welcome to Our App!</h1>
             </td>
         </tr>
@@ -74,7 +74,7 @@ export const WELCOME_EMAIL_TEMPLATE = `
                 <table border="0" cellpadding="0" cellspacing="0" width="100%" style="margin-top: 30px; margin-bottom: 30px;">
                     <tr>
                         <td align="center">
-                            <a href="{dashboardLink}" style="display: inline-block; padding: 14px 30px; background: linear-gradient(to right, #4158D0, #C850C0, #FFCC70); color: #ffffff; text-decoration: none; border-radius: 5px; font-weight: bold; text-transform: uppercase; font-size: 16px;">Go to Dashboard</a>
+                            <a href="{loginLink}" style="display: inline-block; padding: 14px 30px; background: linear-gradient(to right, #161940, #131545, #2B2580, #493CAB, #3A32A6, #1C1C63);  color: #ffffff; text-decoration: none; border-radius: 5px; font-weight: bold; text-transform: uppercase; font-size: 16px;">Go to Login</a>
                         </td>
                     </tr>
                 </table>
@@ -110,7 +110,7 @@ export const PASSWORD_RESET_SUCCESS_TEMPLATE = `
 <body style="margin: 0; padding: 0; font-family: Arial, sans-serif; background-color: #ffffff; display: flex; justify-content: center; align-items: center;">
     <table border="0" cellpadding="0" cellspacing="0" height="100%" width="100%" style="max-width: 600px; margin: 20px auto !important; background-color: #ffffff; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
         <tr>
-            <td style="padding: 40px 30px; background: linear-gradient(to right, #3A1C71, #D76D77, #FFAF7B); text-align: center;">
+            <td style="padding: 40px 30px; background: background: linear-gradient(to rightt, #161940, #131545, #2B2580, #493CAB, #3A32A6, #1C1C63); text-align: center;">
                 <h1 style="color: #ffffff; margin: 0; font-size: 28px; font-weight: bold;">Password Reset Successful</h1>
             </td>
         </tr>
@@ -121,7 +121,7 @@ export const PASSWORD_RESET_SUCCESS_TEMPLATE = `
                 <table border="0" cellpadding="0" cellspacing="0" width="100%" style="margin-top: 30px; margin-bottom: 30px;">
                     <tr>
                         <td align="center">
-                            <a href="{loginLink}" style="display: inline-block; padding: 14px 30px; background: linear-gradient(to right, #4158D0, #C850C0, #FFCC70); color: #ffffff; text-decoration: none; border-radius: 5px; font-weight: bold; text-transform: uppercase; font-size: 16px;">Log In</a>
+                            <a href="{loginLink}" style="display: inline-block; padding: 14px 30px; background: linear-gradient(to right, #161940, #131545, #2B2580, #493CAB, #3A32A6, #1C1C63); color: #ffffff; text-decoration: none; border-radius: 5px; font-weight: bold; text-transform: uppercase; font-size: 16px;">Log In</a>
                         </td>
                     </tr>
                 </table>
@@ -155,7 +155,7 @@ export const PASSWORD_RESET_TEMPLATE = `
 <body style="margin: 0; padding: 0; font-family: Arial, sans-serif; background-color: #ffffff; display: flex; justify-content: center; align-items: center;">
     <table border="0" cellpadding="0" cellspacing="0" height="100%" width="100%" style="max-width: 600px; margin: 20px auto !important; background-color: #ffffff; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
         <tr>
-            <td style="padding: 40px 30px; background: linear-gradient(to right, #3A1C71, #D76D77, #FFAF7B); text-align: center;">
+            <td style="padding: 40px 30px; background: background: linear-gradient(to right, #161940, #131545, #2B2580, #493CAB, #3A32A6, #1C1C63); text-align: center;">
                 <h1 style="color: #ffffff; margin: 0; font-size: 28px; font-weight: bold;">Reset Your Password</h1>
             </td>
         </tr>
@@ -166,7 +166,7 @@ export const PASSWORD_RESET_TEMPLATE = `
                 <table border="0" cellpadding="0" cellspacing="0" width="100%" style="margin-top: 30px; margin-bottom: 30px;">
                     <tr>
                         <td align="center">
-                            <a href="{resetPasswordLink}" style="display: inline-block; padding: 14px 30px; background: linear-gradient(to right, #4158D0, #C850C0, #FFCC70); color: #ffffff; text-decoration: none; border-radius: 5px; font-weight: bold; text-transform: uppercase; font-size: 16px;">Reset Password</a>
+                            <a href="{resetPasswordLink}" style="display: inline-block; padding: 14px 30px; background: background: linear-gradient(to right, #161940, #131545, #2B2580, #493CAB, #3A32A6, #1C1C63); color: #ffffff; text-decoration: none; border-radius: 5px; font-weight: bold; text-transform: uppercase; font-size: 16px;">Reset Password</a>
                         </td>
                     </tr>
                 </table>

@@ -5,7 +5,7 @@ import dotenv from 'dotenv'
 import { User } from '../models/user.model.js'
 import { generateVerificationToken } from '../utils/generateVerificationToken.js';
 import { generateTokenSetCookies } from '../utils/generateTokenSetCookies.js'
-import { passwordResetSuccessEmail, sendResetPasswordEmail, sendVerificationEmail, sendWelcomeEmail } from '../mailtrap/emailFunctions.js'
+import { passwordResetSuccessEmail, sendResetPasswordEmail, sendVerificationEmail, sendWelcomeEmail } from '../nodemailer/emailFunctions.js'
 
 dotenv.config()
 
@@ -85,7 +85,7 @@ export const verifyEmail = async (req, res) => {
 
     await user.save(); 
 
-    await sendWelcomeEmail(user.email, user.name)
+    await sendWelcomeEmail(user.email, user.name, `${process.env.CLIENT_URL}/login`)
 
     res.status(200).json({
       success: true, 
