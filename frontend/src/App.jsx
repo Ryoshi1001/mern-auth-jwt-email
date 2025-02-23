@@ -20,11 +20,15 @@ const VerifyEmail = lazy(() => import('./pages/VerifyEmail'));
 const ProtectedRoute = ({ children }) => {
   const { isAuthenticated, user } = useAuthStore();
 
+  if (!user && !isAuthenticated) {
+    return <Navigate to="/signup" replace />;
+  }
+
   if (!isAuthenticated) {
     return <Navigate to="/login" replace />;
   }
 
-  if (!user.isVerified) {
+  if (user && !user.isVerified) {
     return <Navigate to="/verify-email" replace />;
   }
 

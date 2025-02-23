@@ -3,7 +3,12 @@ import jwt from 'jsonwebtoken'
 export const verifyToken = (req, res, next) => {
   // res.cookie("token", token,: .token at end of req.cookies.token is "token" name if name "jwt" then would be req.cookies.jwt
   const token = req.cookies.token
-  if(!token) return res.status(401).json({success: false, message: "Unauthorized - no token provided"})
+
+  if(!token) {
+       return res.status(401).json({success: false, message: "Unauthorized - no token provided"}) 
+  }
+
+
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET)
 

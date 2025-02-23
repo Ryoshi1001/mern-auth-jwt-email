@@ -3,13 +3,13 @@
   "version": "1.0.0",
   "description": "Full Hand-Coded Authentication System with Sign Up, LogIn, LogOut, Email Verification, Forgot Password Recovery, Welcome Emails",
   "main": "index.js",
-"scripts": {
-  "test": "echo \"Error: no test specified\" && exit 1",
-  "dev": "NODE_ENV=development nodemon backend/index.js",
-  "start": "node ./backend/index.js",
-  "build": "npm install && cd frontend && npm install && npm run build && cd ..",
-  "postbuild": "npm install"
-},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "NODE_ENV=development nodemon ./backend/index.js",
+    "start": "node ./backend/index.js",
+    "build": "npm install && cd frontend && npm install && npm run build && cd ..",
+    "postbuild": "npm install"
+  },
   "type": "module",
   "keywords": [],
   "author": "",

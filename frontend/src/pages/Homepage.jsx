@@ -20,7 +20,6 @@ const Homepage = () => {
   const handleLogout = () => {
     logout();
     toast.success('Logout successful', { duration: 3000 });
-      navigate('/');
     navigate('/login');
   };
 

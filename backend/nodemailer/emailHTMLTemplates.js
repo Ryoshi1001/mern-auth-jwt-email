@@ -88,7 +88,7 @@ export const WELCOME_EMAIL_TEMPLATE = `
             <td style="padding: 20px 30px; background-color: #f8f8f8; text-align: center; color: #888888; font-size: 14px;">
                 <p style="margin: 0;">© 2025 MERN Auth App. All rights reserved.</p>
                 <p style="margin-top: 10px;">
-                    <a href="#" style="color:#00CDAC;text-decoration:none;">Terms of Service</a> | 
+                    <a href="#" style="color:#00CDAC; text-decoration:none; ">Terms of Service</a> | 
                     <a href="#" style="color:#FF6B6B;text-decoration:none;">Privacy Policy</a>
                 </p>
             </td>
@@ -110,7 +110,7 @@ export const PASSWORD_RESET_SUCCESS_TEMPLATE = `
 <body style="margin: 0; padding: 0; font-family: Arial, sans-serif; background-color: #ffffff; display: flex; justify-content: center; align-items: center;">
     <table border="0" cellpadding="0" cellspacing="0" height="100%" width="100%" style="max-width: 600px; margin: 20px auto !important; background-color: #ffffff; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
         <tr>
-            <td style="padding: 40px 30px; background: background: linear-gradient(to rightt, #161940, #131545, #2B2580, #493CAB, #3A32A6, #1C1C63); text-align: center;">
+            <td style="padding: 40px 30px; background: linear-gradient(to right, #161940, #131545, #2B2580, #493CAB, #3A32A6, #1C1C63); text-align: center;">
                 <h1 style="color: #ffffff; margin: 0; font-size: 28px; font-weight: bold;">Password Reset Successful</h1>
             </td>
         </tr>
@@ -155,7 +155,7 @@ export const PASSWORD_RESET_TEMPLATE = `
 <body style="margin: 0; padding: 0; font-family: Arial, sans-serif; background-color: #ffffff; display: flex; justify-content: center; align-items: center;">
     <table border="0" cellpadding="0" cellspacing="0" height="100%" width="100%" style="max-width: 600px; margin: 20px auto !important; background-color: #ffffff; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
         <tr>
-            <td style="padding: 40px 30px; background: background: linear-gradient(to right, #161940, #131545, #2B2580, #493CAB, #3A32A6, #1C1C63); text-align: center;">
+            <td style="padding: 40px 30px; background:linear-gradient(to right, #161940, #131545, #2B2580, #493CAB, #3A32A6, #1C1C63); text-align: center;">
                 <h1 style="color: #ffffff; margin: 0; font-size: 28px; font-weight: bold;">Reset Your Password</h1>
             </td>
         </tr>
@@ -166,13 +166,12 @@ export const PASSWORD_RESET_TEMPLATE = `
                 <table border="0" cellpadding="0" cellspacing="0" width="100%" style="margin-top: 30px; margin-bottom: 30px;">
                     <tr>
                         <td align="center">
-                            <a href="{resetPasswordLink}" style="display: inline-block; padding: 14px 30px; background: background: linear-gradient(to right, #161940, #131545, #2B2580, #493CAB, #3A32A6, #1C1C63); color: #ffffff; text-decoration: none; border-radius: 5px; font-weight: bold; text-transform: uppercase; font-size: 16px;">Reset Password</a>
+                            <a href="{resetPasswordLink}" style="display: inline-block; padding: 14px 30px; background: linear-gradient(to right, #161940, #131545, #2B2580, #493CAB, #3A32A6, #1C1C63); color: #ffffff; text-decoration: none; border-radius: 5px; font-weight: bold; text-transform: uppercase; font-size: 16px;">Reset Password</a>
                         </td>
                     </tr>
                 </table>
                 <p style="color: #333333; font-size: 16px; line-height: 1.5;">This password reset link will expire in 1 hour for security reasons.</p>
                 <p style="color: #333333; font-size: 16px; line-height: 1.5;">If you're having trouble with the button above, copy and paste the URL below into your web browser:</p>
-                <p style="color: #333333; font-size: 14px; line-height: 1.5; word-break: break-all;">{resetPasswordLink}</p>
                 <p style="color: #333333; font-size: 16px; line-height: 1.5;">Best regards,<br>Your App Team</p>
             </td>
         </tr>

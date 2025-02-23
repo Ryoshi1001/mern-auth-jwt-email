@@ -3,4 +3,3 @@ export const generateVerificationToken = () => {
 }
 
 
-console.log(generateVerificationToken())
