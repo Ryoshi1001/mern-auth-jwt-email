@@ -50,13 +50,15 @@ export const sendWelcomeEmail = async (email, name, loginURL) => {
   }
 };
 
-export const sendResetPasswordEmail = async (email, resetURL) => {
+export const sendResetPasswordEmail = async (email, name, resetURL) => {
 
   try {
-    const emailContent = PASSWORD_RESET_TEMPLATE.replace(
+    const emailContent = PASSWORD_RESET_TEMPLATE
+    .replace(
       /{resetPasswordLink}/g,
       resetURL
-    );
+    )
+    .replace(/{userName}/g, name);
     const mailOptions = {
       from: process.env.EMAIL_USER,
       to: email,

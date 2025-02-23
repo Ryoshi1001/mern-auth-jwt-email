@@ -56,7 +56,7 @@ export const WELCOME_EMAIL_TEMPLATE = `
     <table border="0" cellpadding="0" cellspacing="0" height="100%" width="100%" style="max-width: 600px; margin: 20px auto !important; background-color: #ffffff; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
         <!-- Header Section -->
         <tr>
-            <td style="padding: 40px 30px; background: linear-gradient(to right, #161940, #131545, #2B2580, #493CAB #3A32A6, #1C1C63); text-align: center;">
+            <td style="padding: 40px 30px; background: linear-gradient(to right, #161940, #131545, #2B2580, #493CAB, #3A32A6, #1C1C63);">
                 <h1 style="color: #ffffff; margin: 0; font-size: 28px; font-weight: bold;">Welcome to Our App!</h1>
             </td>
         </tr>
@@ -161,7 +161,7 @@ export const PASSWORD_RESET_TEMPLATE = `
         </tr>
         <tr>
             <td style="padding: 40px 30px;">
-                <p style="color: #333333; font-size: 16px; line-height: 1.5;">Hello</p>
+                <p style="color: #333333; font-size: 16px; line-height: 1.5;">Hello {userName}</p>
                 <p style="color: #333333; font-size: 16px; line-height: 1.5;">We received a request to reset your password. If you didn't make this request, you can ignore this email. Otherwise, please use the button below to reset your password.</p>
                 <table border="0" cellpadding="0" cellspacing="0" width="100%" style="margin-top: 30px; margin-bottom: 30px;">
                     <tr>
