@@ -56,7 +56,7 @@ export const WELCOME_EMAIL_TEMPLATE = `
     <table border="0" cellpadding="0" cellspacing="0" height="100%" width="100%" style="max-width: 600px; margin: 20px auto !important; background-color: #ffffff; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
         <!-- Header Section -->
         <tr>
-            <td style="padding: 40px 30px; background: linear-gradient(to right, #161940, #131545, #2B2580, #493CAB, #3A32A6, #1C1C63);">
+            <td style="padding: 40px 30px; background: linear-gradient(to right, #161940, #131545, #2B2580, #493CAB, #3A32A6, #1C1C63); text-align: center;">
                 <h1 style="color: #ffffff; margin: 0; font-size: 28px; font-weight: bold;">Welcome to Our App!</h1>
             </td>
         </tr>
